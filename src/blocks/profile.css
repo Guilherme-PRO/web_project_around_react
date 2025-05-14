@@ -3,6 +3,7 @@
     width:100%;
     margin-bottom: 50px;
     gap: 30px;
+    color: #ffff;
 }
 .profile__new{
     display: flex;

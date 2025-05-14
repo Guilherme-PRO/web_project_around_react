@@ -1,9 +1,8 @@
 .page{
     background-color: #000000;
     position: relative;
-    color: #ffff;
     max-width: 1280px;
-    min-width: 320px;
+    /*min-width: 320px;*/
     background-size: cover;
     display: flex;
     flex-direction: column;
