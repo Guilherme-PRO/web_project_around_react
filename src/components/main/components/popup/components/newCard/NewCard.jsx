@@ -1,9 +1,20 @@
-
+import React, { useContext, useState } from 'react';
+import CurrentUserContext from "../../../../../../contexts/CurrentUserContext";
 export default function NewCard() {
+  const [title, setTitle] = useState('');
+  const [link, setLink]  = useState('');
+  const { handleAddPlaceSubmit} = useContext(CurrentUserContext)
   
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleAddPlaceSubmit({title, link})
+  }
+
   return (
-    <form className="popup__form" id="form-addCard" name="formAdd">
+    <form className="popup__form" id="form-addCard" name="formAdd" onSubmit={handleSubmit}>
       <input
+       value={title}
+       onChange={(e) => setTitle(e.target.value)}
         id="title"
         name="name"
         type="text"
@@ -18,6 +29,8 @@ export default function NewCard() {
       <input
         id="link"
         name="link"
+        value={link}
+        onChange={(e) => setLink(e.target.value)}
         type="url"
         className="popup__input"
         placeholder="Link the imagen"
@@ -27,7 +40,8 @@ export default function NewCard() {
         required
       />
       <span className="popup__input-error link-error"></span>
-      <button disabled type="submit" className="popup__submit" id="create">
+      
+      <button type="submit" className="popup__submit" id="create">
         Criar
       </button>
     </form>
