@@ -3,7 +3,7 @@ import Main from "./main/Main.jsx";
 import Footer from "./footer/Footer.jsx";
 import React, { useState, useEffect } from "react";
 import api from "../utils/api.js";
-import CurrentUserContext from "../contexts/CurrentUserContext.jsx";
+import CurrentUserContext from "../contexts/CurrentUserContext.js";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -108,6 +108,7 @@ export default function App() {
     <>
       <div className="page">
         <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar, handleAddPlaceSubmit }}>
+         CurrentUserContext
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}

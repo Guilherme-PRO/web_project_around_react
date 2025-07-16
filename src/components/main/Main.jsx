@@ -6,7 +6,7 @@ import EditProfile from "./components/popup/components/editProfile/EditProfile";
 import NewCard from "./components/popup/components/newCard/NewCard";
 import Popup from "../main/components/popup/Popup.jsx";
 import Card from "./components/card/Card";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import { useContext } from "react";
 
 export default function Main({onOpenPopup, onClosePopup, popup, onCardDelete, onCardLike, cards}) {
