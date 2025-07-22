@@ -1,19 +1,29 @@
 import React, { useContext, useState } from 'react';
 import CurrentUserContext from "../../../../../../contexts/CurrentUserContext.js";
-export default function NewCard() {
-  const [title, setTitle] = useState('');
+import closeIcon from "../../../../../../image/CloseIconclosde.png";
+export default function NewCard({title, onClosePopup}) {
+  const [name, setTitle] = useState('');
   const [link, setLink]  = useState('');
   const { handleAddPlaceSubmit} = useContext(CurrentUserContext)
   
   function handleSubmit(event) {
     event.preventDefault();
-    handleAddPlaceSubmit({title, link})
+    handleAddPlaceSubmit({name, link})
   }
 
   return (
-    <form className="popup__form" id="form-addCard" name="formAdd" onSubmit={handleSubmit}>
+    <form className="popup__form popup__overlay" id="form-addCard" name="formAdd" onSubmit={handleSubmit}>
+      <img
+            type="button"
+            src= {closeIcon}
+            alt="closeButton"
+            id="close-one"
+            className="popup__close"
+            onClick={onClosePopup} 
+          />
+      <h2 className="popup__title">{title}</h2>
       <input
-       value={title}
+       value={name}
        onChange={(e) => setTitle(e.target.value)}
         id="title"
         name="name"

@@ -13,10 +13,11 @@ export default function Main({onOpenPopup, onClosePopup, popup, onCardDelete, on
   const {currentUser} = useContext(CurrentUserContext);
   
 
-  const newCardPopup = { title: "New Card", children: <NewCard /> };
-  const EditAvatarPopup = { title: "Edit Avatar", children: <EditAvatar /> };
-  const EditProfilePopup = { title: "Edit Profile", children: <EditProfile /> };
-
+  const newCardPopup = {children: <NewCard title={ "New Card"} onClosePopup={onClosePopup}/> };
+  const EditAvatarPopup = {  children: <EditAvatar title={"Edit Avatar"} onClosePopup={onClosePopup} /> };
+  const EditProfilePopup = {  children: <EditProfile title={"Edit Profile"} onClosePopup={onClosePopup} /> };
+  
+  
   return ( 
     <main className="main">
       <section className="profile">
@@ -36,6 +37,7 @@ export default function Main({onOpenPopup, onClosePopup, popup, onCardDelete, on
               onClick={() => onOpenPopup(EditAvatarPopup)}
             />
           </div>
+          
           <div className="profile__edit">
             <div className="profile__avatar-name">
               <h1 className="profile__title">{currentUser?.name}</h1>
@@ -68,6 +70,7 @@ export default function Main({onOpenPopup, onClosePopup, popup, onCardDelete, on
                 link={card.link}
                 cardId={card._id}
                 onOpenPopup={onOpenPopup}
+                onClosePopup={onClosePopup}
                 isLiked={card.isLiked}
                 toggleLike={(isLiked) => onCardLike(card._id, isLiked)}
                 onCardDelete={() => onCardDelete(card._id)}
@@ -76,7 +79,7 @@ export default function Main({onOpenPopup, onClosePopup, popup, onCardDelete, on
         </ul>
       </section>
       {popup && (
-        <Popup onClose={onClosePopup} title={popup.title}>
+        <Popup >
           {popup.children}
         </Popup>
       )}

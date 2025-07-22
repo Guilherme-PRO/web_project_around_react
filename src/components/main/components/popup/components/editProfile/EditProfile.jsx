@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import CurrentUserContext from "../../../../../../contexts/CurrentUserContext.js";
+import closeIcon from "../../../../../../image/CloseIconclosde.png";
 
-export default function EditProfile() {
+export default function EditProfile({title, onClosePopup}) {
   
   const {currentUser, handleUpdateUser} = useContext(CurrentUserContext);
   const [name, setName] = useState('');
@@ -29,7 +30,16 @@ export default function EditProfile() {
   }
 
   return (
-    <form className="popup__form" id="popup__form" name="formName" onSubmit={handleSumit}>
+    <form className="popup__overlay" id="popup__form" name="formName" onSubmit={handleSumit} >
+      <img
+            type="button"
+            src= {closeIcon}
+            alt="closeButton"
+            id="close-one"
+            className="popup__close"
+            onClick={onClosePopup} 
+          />
+      <h2 className="popup__title">{title}</h2>
       <input
         id="name"
         name="name"

@@ -97,9 +97,11 @@ export default function App() {
     }
   }
 
-  async function handleAddPlaceSubmit({title, link}) {
-    const newCard = await api.creatCard({name: title, link})
+  async function handleAddPlaceSubmit({name, link}) {
+    const newCard = await api.creatCard({name, link})
+
     const newCardData = await newCard.json();
+    handleClosePopup()
     setCards([newCardData, ...cards])
     
   }
@@ -108,7 +110,6 @@ export default function App() {
     <>
       <div className="page">
         <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar, handleAddPlaceSubmit }}>
-         CurrentUserContext
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}

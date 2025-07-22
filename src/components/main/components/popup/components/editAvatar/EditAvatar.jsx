@@ -1,7 +1,7 @@
-import { useEffect, useRef, useContext } from "react";
+import { useRef, useContext } from "react";
 import CurrentUserContext from "../../../../../../contexts/CurrentUserContext.js";
-
-export default function EditAvatar() {
+import closeIcon from "../../../../../../image/CloseIconclosde.png";
+export default function EditAvatar({title, onClosePopup}) {
   const avatarRef = useRef(null);
   const {handleUpdateAvatar} = useContext(CurrentUserContext);
   
@@ -15,7 +15,16 @@ export default function EditAvatar() {
   }
 
   return (
-    <form className="popup__form" id="form-photoPerfil" name="formphotoPerfil" onSubmit={handleSubmit}>
+    <form className="popup__overlay" id="form-photoPerfil" name="formphotoPerfil" onSubmit={handleSubmit}>
+      <img
+            type="button"
+            src= {closeIcon}
+            alt="closeButton"
+            id="close-one"
+            className="popup__close"
+            onClick={onClosePopup} 
+          />
+      <h2 className="popup__title">{title}</h2>
       <input
         ref={avatarRef} 
         id="links"
